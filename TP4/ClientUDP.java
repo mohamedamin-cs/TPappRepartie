@@ -24,7 +24,6 @@ public class ClientUDP {
             System.out.println(msg);
           }
         } catch (Exception e) {
-          // Fin de la réception
         }
       });
       receptionThread.start();
