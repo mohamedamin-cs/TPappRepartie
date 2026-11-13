@@ -31,12 +31,7 @@ L'application est divisée en deux projets distincts :
   * Dépendance externe : Intégration de l'archive `conversionClient.jar` (contenant uniquement l'interface `IConversion`) dans le *Classpath*.
   * `rmiClient.ConversionClient` : Récupère la référence du *Stub* distant via `Naming.lookup()` et invoque la méthode de conversion de manière transparente.
 
-### 3. Résultats et Captures d'écran
-> *(Insérer ici les captures d'écran de l'exécution)*
-> * **Capture 1 :** Démarrage du serveur `ConversionServer` dans la console.
-> * **Capture 2 :** Exécution de `ConversionClient` affichant la conversion de 500 EUR.
-
-### 4. Synthèse de l'activité 5-1
+### 3. Synthèse de l'activité 5-1
 Cette première étape a permis de comprendre le mécanisme fondamental de Java RMI : la séparation stricte entre le contrat (interface partagée via un JAR) et l'implémentation (conservée uniquement sur le serveur). La communication réseau est entièrement gérée par les couches *Stub* et *Skeleton*.
 
 ---
@@ -59,13 +54,7 @@ Développer un système centralisé de gestion de comptes bancaires permettant l
   * `src/jndi.properties` : Configuration identique au serveur permettant à `InitialContext` de localiser l'annuaire sans coder en dur l'adresse réseau.
   * `rmiClient.BanqueClient` : Localise le service via `ctx.lookup("banqueService")`, crée des instances de `Compte` et teste les opérations de création (y compris la gestion d'erreur en cas de code existant) et de consultation.
 
-### 3. Résultats et Captures d'écran
-> *(Insérer ici les captures d'écran de l'exécution)*
-> * **Capture 1 :** Arborescence des projets et configuration du `Build Path` avec `banqueClient.jar`.
-> * **Capture 2 :** Lancement de `BanqueServer`.
-> * **Capture 3 :** Console de `BanqueClient` montrant la création des comptes, le rejet des doublons et l'affichage des détails des comptes.
-
-### 4. Synthèse de l'activité 5-2
+### 3. Synthèse de l'activité 5-2
 L'intégration de JNDI apporte une couche d'abstraction essentielle : l'application cliente et l'application serveur sont désormais découplées de l'adresse physique du registre RMI, celle-ci étant externalisée dans le fichier `jndi.properties`. Par ailleurs, la manipulation de la classe `Compte` a mis en évidence le rôle indispensable de la sérialisation pour le passage d'objets complexes par valeur dans un environnement distribué.
 
 ---
